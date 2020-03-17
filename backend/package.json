@@ -1,0 +1,12 @@
+{
+  "name": "CoronaAlertApi",
+  "version": "1.0",
+  "description": "The CoronaAlert Project API",
+  "main": "index.js",
+  "repository": "https://github.com/MrWillian/CoronaAlert.git",
+  "author": "Willian Marciel",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
