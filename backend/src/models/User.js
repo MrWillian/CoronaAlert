@@ -5,17 +5,23 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+  email: {
+    type: String,
+    required: true,
+  },
   avatar: String,
   age: {
-    type: String,
+    type: Number,
     required: true,
   },
   country: {
     type: String,
     required: true,
   },
-
-
+  hasCovid: { 
+    type: Boolean,
+    required: true,
+  },
 }, {
   timestamps: true,
 });
