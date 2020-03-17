@@ -12,5 +12,8 @@
     "express": "^4.17.1",
     "mongoose": "^5.9.5",
     "socker.io": "^0.0.0-alpha-beta"
+  },
+  "devDependencies": {
+    "jest": "^25.1.0"
   }
 }
