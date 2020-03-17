@@ -1,4 +1,6 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
 
 const routes = require('./routes');
 
@@ -8,6 +10,10 @@ const io = require('socket.io')(server);
 
 io.on('connect', socket => {
   console.log(socket);
+});
+
+mongoose.connect('mongodb+srv://BetterWorld:1bsp1538@clusteralertapp-qwtrs.mongodb.net/alertapp?retryWrites=true&w=majority', {
+  useNewUrlParser: true
 });
 
 app.use((req, res, next) => {
