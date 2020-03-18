@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+var bodyParser = require('body-parser');
 
 const routes = require('./routes');
 
@@ -24,6 +25,9 @@ app.use((req, res, next) => {
 
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(bodyParser.json());
 app.use(routes);
 
 server.listen(3333);
