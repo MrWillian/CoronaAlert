@@ -18,7 +18,7 @@ const UserSchema = new Schema({
     type: Number,
     required: true,
   },
-  country: {
+  city: {
     type: String,
     required: true,
   },
