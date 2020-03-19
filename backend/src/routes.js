@@ -5,6 +5,6 @@ const userController = require('../src/controllers/UserController');
 
 routes.post('/api/user', userController.store);
 
-routes.get('/api/login', userController.login);
+routes.post('/api/login', userController.login);
 
 module.exports = routes;
