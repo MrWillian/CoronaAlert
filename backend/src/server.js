@@ -19,7 +19,6 @@ mongoose.connect('mongodb+srv://BetterWorld:1bsp1538@clusteralertapp-qwtrs.mongo
 
 app.use((req, res, next) => {
   req.io = io;
-
   return next();
 });
 
