@@ -1,34 +1,32 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
-module.exports = {
-  async store(req, res) {
-    const { name, email, password, age, country, hasCovid } = req.body;
+exports.store = async function(req, res) {
+  const { name, email, password, age, country, hasCovid } = req.body;
 
-    const hashPassword = bcrypt.hashSync(password, 10);
+  const hashPassword = bcrypt.hashSync(password, 10);
 
-    const user = await User.create({
-      name, email, password: hashPassword, age, country, hasCovid
-    });
+  const user = await User.create({
+    name, email, password: hashPassword, age, country, hasCovid
+  });
 
-    req.io.emit('newUser', res.json(user));
+  req.io.emit('newUser', res.json(user));
 
-    return res.status(200).send();
-  },
+  return res.status(200).send();
+}
 
-  async login(req, res) {
-    const { email, password } = req.body;
+exports.login = async function(req, res) {
+  const { email, password } = req.body;
 
-    const userExists = await User.findOne({ email });
-    
-    if (userExists) {
-      if(bcrypt.compareSync(password, userExists.password)) {
-        return res.json(userExists);
-      } else {
-        return res.json('unauthorized');
-      }
+  const userExists = await User.findOne({ email });
+  
+  if (userExists) {
+    if(bcrypt.compareSync(password, userExists.password)) {
+      return res.status(200).send(userExists);
     } else {
-      return res.json("user doesn't exist");
+      res.status(401).send();
     }
+  } else {
+    res.sendStatus(404);
   }
 }
