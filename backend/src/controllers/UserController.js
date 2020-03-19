@@ -2,12 +2,12 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
 exports.store = async function(req, res) {
-  const { name, email, password, age, country, hasCovid } = req.body;
+  const { name, email, password, age, city, hasCovid } = req.body;
 
   const hashPassword = bcrypt.hashSync(password, 10);
 
   const user = await User.create({
-    name, email, password: hashPassword, age, country, hasCovid
+    name, email, password: hashPassword, age, city, hasCovid
   });
 
   req.io.emit('newUser', res.json(user));
